@@ -512,6 +512,64 @@ Git Deployment From Various Branch to Production & Cherry-pick
 </details>
 
 
+### Git Rename Commit and Remove already pushed commit
+<details>
+	
+Revert The Commit Which is Already Merged
+-----------------------------------------
+
+
+    - git revert a999289   (last commit id - which is pushed)
+
+    - git push origin feature/M2-5393-Request-to-enable-Content-Security-Policy-header-on-store.nobelbiocare.com-v1
+
+
+
+   - showing two --- commit (resolve / revert as well) 
+
+           
+          - git rebase -i HEAD~5
+
+            - You'll see (oldest at top):
+
+              pick a2186b2 M2-5393-Request-to-enable-Content-Security-P...
+              pick a011ef1 M2-5393: CSP issue
+              pick 7c0682d M2-5393: CSP handle dynamic url
+              pick a999289 M2-5393: resolve conflict
+              pick 2c0f595 Revert "M2-5393: resolve conflict"
+
+                - Ctrl + O | Ctrl + X
+               
+
+           - Change to drop (or delete the lines) for the last two:
+
+              pick a2186b2 M2-5393-Request-to-enable-Content-Security-P...
+              pick a011ef1 M2-5393: CSP issue
+              pick 7c0682d M2-5393: CSP handle dynamic url
+              drop a999289 M2-5393: resolve conflict
+              drop 2c0f595 Revert "M2-5393: resolve conflict"
+    
+
+
+
+Rename the Commit Message Which Is Already Pushed
+--------------------------------------------------
+
+
+        - git rebase -i HEAD~3
+              
+        - You'll see (oldest at top):
+
+               - pick   cd0b5081c M2-5393-Request-to-enable-Content-Security-Policy-header-on-store.nobelbiocare
+                 pick f354c8abf CSP issue
+                 pick 9e05cbae7 CSP handle dynamic url
+
+        - Change to rename (or rename the lines) for the last two:
+
+              - pick   cd0b5081c M2-5393-Request-to-enable-Content-Security-Policy-header-on-store.nobelbiocare
+                reword f354c8abf M2-5393: CSP issue
+                reword 9e05cbae7 M2-5393: CSP handle dynamic url
+</details>
 
 
 
